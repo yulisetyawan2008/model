@@ -11,6 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', function() {
+    return view('home');
 });
+
+Route::get('/jawaban', 'JawabanController@index');
+Route::get('/jawaban/create', 'JawabanController@create');
+Route::post('/jawaban', 'JawabanController@jawaban');
+
+Route::get('/pertanyaan', 'PertanyaanController@index');
+Route::get('/pertanyaan/create', 'PertanyaanController@create');
+Route::post('/pertanyaan', 'PertanyaanController@pertanyaan');
