@@ -22,7 +22,13 @@ Route::get('/', function() {
 Route::get('/jawaban', 'JawabanController@index');
 Route::get('/jawaban/create', 'JawabanController@create');
 Route::post('/jawaban', 'JawabanController@jawaban');
+Route::get('jawaban/{pertanyaan_id}', 'JawabanController@index');
+Route::post('jawaban/{pertanyaan_id}', 'JawabanController@store');
 
-Route::get('/pertanyaan', 'PertanyaanController@index');
-Route::get('/pertanyaan/create', 'PertanyaanController@create');
-Route::post('/pertanyaan', 'PertanyaanController@pertanyaan');
+Route::get('/pertanyaan', 'PertanyaanController@index'); // menampilkan semua
+Route::get('/pertanyaan/create', 'PertanyaanController@create'); // menampilkan halaman form
+Route::post('/pertanyaan', 'PertanyaanController@store'); // menyimpan data
+Route::get('/pertanyaan/{id}', 'PertanyaanController@show'); // menampilkan detail pertanyaan dengan id
+Route::get('/pertanyaan/{id}/edit', 'PertanyaanController@edit');// menampilkan form untuk edit item
+Route::put('/pertanyaan/{id}', 'PertanyaanController@update'); // menyimpan perubahan dari form edit
+Route::delete('/pertanyaan/{id}', 'PertanyaanController@destroy'); // menghapus data dengan id

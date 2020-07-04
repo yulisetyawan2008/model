@@ -9,6 +9,7 @@ class JawabanModel {
         return $jawaban;
     }
     public static function save($data){
+        // dd($data);
         $jawaban_baru = DB::table('jawaban')->insert($data);
         return $jawaban_baru;
     }

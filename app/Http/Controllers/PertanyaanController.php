@@ -18,7 +18,7 @@ class PertanyaanController extends Controller
         return view('pertanyaan.form');
     }
 
-    public function pertanyaan(Request $request){
+    public function store(Request $request){
         // dd($request->all());
         $data = $request->all();
         unset($data["_token"]);
@@ -27,5 +27,26 @@ class PertanyaanController extends Controller
         if($pertanyaan){
             return redirect('/pertanyaan');
         }
+    }
+
+    public function show($id){
+        $pertanyaan = PertanyaanModel::find_by_id($id);
+        return view('pertanyaan.show', compact('pertanyaan'));
+    }
+
+    public function edit($id){
+        $pertanyaan = PertanyaanModel::find_by_id($id);
+        return view('pertanyaan.edit', compact('pertanyaan'));
+    }
+
+    public function update($id, Request $request){
+        // dd($request->all());
+        $pertanyaan = PertanyaanModel::update($id, $request->all());
+        return redirect('/pertanyaan');
+    }
+
+    public function destroy($id){
+        $deleted = PertanyaanModel::destroy($id);
+        return redirect('/pertanyaan');
     }
 }
