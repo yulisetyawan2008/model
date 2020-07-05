@@ -9,10 +9,11 @@ use App\Models\PertanyaanModel;
 class JawabanController extends Controller
 {
     //
-    public function index($id){
-        $pertanyaan = PertanyaanModel::find_by_id($id);
+    public function index($pertanyaan_id){
+        // dd('jawaban');
+        $jawabans = JawabanModel::find_by_pertanyaan_id($pertanyaan_id);
         // dd($jawaban);
-        return view('jawaban.index', compact('pertanyaan'));
+        return view('jawaban.index', compact('jawabans'));
     }
 
     public function create(){
@@ -30,14 +31,12 @@ class JawabanController extends Controller
         }
     }
 
-    public function store(Request $request){
-        dd($request->all());
+    public function store($pertanyaan_id, Request $request){
+        // dd('test');
+        // dd($request->all());
         $data = $request->all();
         unset($data["_token"]);
-        $jawaban = JawabanModel::save($data);
-        // dd($jawaban);
-        if($jawaban){
-            return redirect('/jawaban');
-        }
+        JawabanModel::save($data);
+        return redirect('/pertanyaan');
     }
 }

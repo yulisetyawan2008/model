@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePertanyaanTable extends Migration
+class CreatePertanyaansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreatePertanyaanTable extends Migration
      */
     public function up()
     {
-        Schema::create('pertanyaan', function (Blueprint $table) {
+        Schema::create('pertanyaans', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('judul');
-            $table->string('isi');
-            $table->integer('penanya_id');
+            $table->longText('isi');
+            $table->date('tanggal_dibuat')->nullable();
+            $table->date('tanggal_diperbaharui')->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreatePertanyaanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pertanyaan');
+        Schema::dropIfExists('pertanyaans');
     }
 }

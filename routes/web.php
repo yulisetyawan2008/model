@@ -19,11 +19,11 @@ Route::get('/', function() {
     return view('home');
 });
 
-Route::get('/jawaban', 'JawabanController@index');
+
 Route::get('/jawaban/create', 'JawabanController@create');
 Route::post('/jawaban', 'JawabanController@jawaban');
-Route::get('jawaban/{pertanyaan_id}', 'JawabanController@index');
-Route::post('jawaban/{pertanyaan_id}', 'JawabanController@store');
+Route::get('/jawaban/{pertanyaan_id}', 'JawabanController@index'); // menampilkan jawaban dari pertanyaan id
+Route::post('/jawaban/{pertanyaan_id}', 'JawabanController@store'); // menyimpan jawaban
 
 Route::get('/pertanyaan', 'PertanyaanController@index'); // menampilkan semua
 Route::get('/pertanyaan/create', 'PertanyaanController@create'); // menampilkan halaman form

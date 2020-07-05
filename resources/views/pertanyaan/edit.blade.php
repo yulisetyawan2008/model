@@ -20,10 +20,8 @@
                     <label for="isi">Masukkan Pertanyaan</label>
                     <input type="text" class="form-control" id="isi" name = "isi" value="{{$pertanyaan->isi}}" placeholder="Isi Pertanyaan">
                   </div>
-                  <div class="form-group">
-                    <label for="penanya_id">Nomor ID Anda</label>
-                    <input type="number" class="form-control" id="penanya_id" value="{{$pertanyaan->penanya_id}}" name = "penanya_id" placeholder="ID Anda">
-                  </div>
+                  <input hidden type="text" name="tanggal_dibuat" value="{{$pertanyaan->tanggal_dibuat}}">
+                  <input hidden type="text" name="tanggal_diperbaharui" value="{{ \Carbon\Carbon::now() }}">
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">

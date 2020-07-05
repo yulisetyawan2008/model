@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\PertanyaanModel;
+use App\Models\JawabanModel;
 
 class PertanyaanController extends Controller
 {
@@ -22,16 +23,16 @@ class PertanyaanController extends Controller
         // dd($request->all());
         $data = $request->all();
         unset($data["_token"]);
-        $pertanyaan = PertanyaanModel::save($data);
-        // dd($jawaban);
-        if($pertanyaan){
-            return redirect('/pertanyaan');
-        }
+        PertanyaanModel::save($data);
+        return redirect('/pertanyaan');
     }
 
     public function show($id){
+        // dd('masuk');
         $pertanyaan = PertanyaanModel::find_by_id($id);
-        return view('pertanyaan.show', compact('pertanyaan'));
+        $jawabans = JawabanModel::find_by_pertanyaan_id($id);
+        // dd($jawabans);
+        return view('pertanyaan.show', compact('pertanyaan', 'jawabans'));
     }
 
     public function edit($id){

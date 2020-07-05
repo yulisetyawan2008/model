@@ -17,12 +17,10 @@
                   </div>
                   <div class="form-group">
                     <label for="isi">Masukkan Pertanyaan</label>
-                    <input type="text" class="form-control" id="isi" name = "isi" placeholder="Isi Pertanyaan">
+                    <textarea class="form-control" id="isi" name = "isi" placeholder="Isi Pertanyaan" cols="30" rows="10"></textarea>
                   </div>
-                  <div class="form-group">
-                    <label for="penanya_id">Nomor ID Anda</label>
-                    <input type="number" class="form-control" id="penanya_id" name = "penanya_id" placeholder="ID Anda">
-                  </div>
+                  <input hidden name="tanggal_dibuat" value="{{ \Carbon\Carbon::now() }}">
+                  <input hidden name="tanggal_diperbaharui" value="{{ \Carbon\Carbon::now() }}">
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">

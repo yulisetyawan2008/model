@@ -5,34 +5,35 @@ use Illuminate\Support\Facades\DB;
 
 class PertanyaanModel {
     public static function get_all(){
-        $pertanyaan = DB::table('pertanyaan')->get();
+        $pertanyaan = DB::table('pertanyaans')->get();
         return $pertanyaan;
     }
 
     public static function save($data){
-        $new_pertanyaan = DB::table('pertanyaan')->insert($data);
+        $new_pertanyaan = DB::table('pertanyaans')->insert($data);
         return $new_pertanyaan;
     }
 
     public static function find_by_id($id){
-        $pertanyaan = DB::table('pertanyaan')->where('id', $id)->first();
-        return $pertanyaan;
+        $item = DB::table('pertanyaans')->where('id', $id)->first();
+        return $item;
     }
 
     public static function update($id, $request){
         // dd($request);
-        $pertanyaan = DB::table('pertanyaan')
+        $pertanyaan = DB::table('pertanyaans')
                         ->where('id', $id)
                         ->update([
                             'judul' => $request["judul"],
                             'isi' => $request["isi"],
-                            'penanya_id' =>$request["penanya_id"],
+                            'tanggal_dibuat' =>$request["tanggal_dibuat"],
+                            'tanggal_diperbaharui' =>$request["tanggal_diperbaharui"],
                         ]);
         return $pertanyaan;
     }
 
     public static function destroy($id){
-        $deleted = DB::table('pertanyaan')
+        $deleted = DB::table('pertanyaans')
                         ->where('id', $id)
                         ->delete();
         return $deleted;
